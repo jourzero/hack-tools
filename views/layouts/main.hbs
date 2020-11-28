@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> headtitle}}
+<link rel="stylesheet" href="/dist/bootstrap/css/bootstrap.min.css">
+<script src="/dist/jquery/jquery.min.js"></script>
+<script src="/dist/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/stylesheets/main.css">
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+                <div>
+                    <strong> Hacking Tools </strong>
+                </div>
+        </nav>
+
+        {{#if error}}
+        <p class="alert alert-warning">{{error}}</p>
+        {{/if}}
+
+        {{#if success}}
+        <p class="alert alert-success">{{success}}</p>
+        {{/if}}
+
+        {{#if notice}}
+        <p class="alert alert-info">{{notice}}</p>
+        {{/if}}
+
+        {{{body}}}
+
+        {{> footer}}
+    </div>
+</body>
+</html>

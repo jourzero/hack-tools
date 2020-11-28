@@ -1,0 +1,44 @@
+<script src="/js/hacks.js"></script>
+<script src="/js/rest.js"></script>
+
+<div id='msg' role='alert'></div>
+
+<table class="issueTab">
+    <tr class="htTR">
+        <th class="htTH">Test Selector</th>
+        <td class="prjLeft2">
+            <table><tr><td>
+            <select id="HackToolSel" title="Scope" class="htSelector" onchange="switchTest()">
+                <option disabled selected value="">Choose tool here</option>
+                <option class="scopeOpt" title="XML Injection Testing"          value="xml">XML Parser</option>
+                <option class="scopeOpt" title="JSON Deserialization Testing"   value="json">JSON Deserializer</option>
+                <option class="scopeOpt" title="MySQL Queries"                  value="mysql">MySQL Queries</option>
+                <option class="scopeOpt" title="SqlLite3 Queries"               value="sqlite">SqlLite3 Queries</option>
+            </select></td>
+            <td>&nbsp;</td>
+            <td> <input type="text" id="HackConfig" title="Hack tool parameters" value="" placeholder="Hack tool config" hidden /> </td>
+            <td>&nbsp;</td>
+            <td> <input type="checkbox" id="PrettifyOutput" class="testKbCB" title="Prettify Output?" hidden><span id="PrettifyLabel" hidden> Prettify </span></td> 
+            <td>&nbsp;</td>
+            <td> <button onclick="runTest()"  id="RunHack"  class="button hacktool" title="Run the selected test"           hidden> Run it! </button> </td>
+            <td>&nbsp;</td>
+            <td> <button onclick="showHackHelp()" id="HackHelp" class="button hacktool" title="Show hacking help for the selected test" hidden> Hack Help </button> </td>
+            <td>&nbsp;</td>
+            <td> <button onclick="showDevHelp()" id="DevHelp" class="button hacktool" title="Show developer help for the selected test" hidden> Dev Help </button> </td>
+            <td>&nbsp;</td>
+            <td> <button onclick="showGenHelp()" id="GenHelp" class="button hacktool" title="Show general help for the selected test" hidden> General Help </button> </td>
+            </tr> </table>
+        </td> 
+    </tr>
+
+    <tr class="iTR">
+        <th class="issueTH">Input Area</th>
+        <td class="prjLeft"><textarea id="InputArea" rows="6"
+                placeholder="Enter inputs to process here."></textarea></td>
+    </tr>
+    <tr class="iTR">
+        <th class="issueTH">Output Area</th>
+        <td class="prjLeft"><textarea id="OutputArea" rows="15"
+                placeholder="Outputs will be shown here"></textarea> </td>
+    </tr>
+</table>
