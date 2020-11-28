@@ -6,9 +6,8 @@
     "main": "server.js",
     "scripts": {
         "start": "npm install && nodemon --watch server --watch package.json server/server.js",
-        "lint": "./node_modules/.bin/eslint server --ext .js",
+        "test": "./node_modules/.bin/eslint server --ext .js",
         "startProd": "node server/server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "authors": [
         "Eric P."
