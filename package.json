@@ -5,7 +5,7 @@
     "description": "Hacking Tools",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon --watch server --watch package.json server/server.js",
+        "start": "npm install && nodemon --watch server --watch package.json server/server.js",
         "startProd": "node server/server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -24,16 +24,17 @@
         "express-handlebars": "5.x",
         "express-session": "^1.17.1",
         "jquery": "^3.5.1",
-        "libxmljs": "^0.19.7",
+        "libxmljs": "0.19.7",
         "method-override": "3.x",
         "morgan": "^1.10.0",
-        "mysql": "^2.18.1",
+        "mysql": "2.18.1",
         "node-serialize": "0.0.4",
         "q": "1.x",
         "serve-favicon": "^2.1.0",
-        "sqlite3": "^5.0.0",
-        "winston": "^3.3.3",
-        "xml2js": "^0.4.23"
+        "sqlite3": "5.0.0",
+        "winston": "^3.3.3"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "eslint": "^7.14.0"
+    }
 }
