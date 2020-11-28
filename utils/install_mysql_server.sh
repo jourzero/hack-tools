@@ -11,7 +11,7 @@ if [ "$answer" = y ];then
     echo -e "\n"
     read -p "-- Execute this command: ${CMD[$i]} ? [y] " answer
     if [ "$answer" = y -o "$answer" = "" ];then
-      ${CMD[$i]}
+      /bin/bash -c "${CMD[$i]}"
     fi
   done
 fi
