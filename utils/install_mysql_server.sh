@@ -1,6 +1,6 @@
 #!/bin/bash
 CMD[1]="apt-get update"
-CMD[2]="apt-get install mysql-server"
+CMD[2]="apt-get -y install mysql-server"
 CMD[3]="service mysql start"
 CMD[4]="service mysql status"
 CMD[5]="mysql < /app/utils/create_mysql_tester.sql"
