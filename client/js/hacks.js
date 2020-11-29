@@ -98,9 +98,9 @@ let hack = {
     ldapsearch: {
         hackref:
             "https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/07-Input_Validation_Testing/06-Testing_for_LDAP_Injection.html",
-        devref: "http://ldapjs.org/client.html",
+        devref: "http://ldapjs.org/client.html#search",
         genref: "https://ldapwiki.com/wiki/LDAP%20Query%20Examples",
-        sample: `{"bind":{"dn":"uid=tesla,dc=example,dc=com","password":"password"},"search":{"base":"dc=example,dc=com","options":{}}}`,
+        sample: `{"bind":{"dn":"uid=tesla,dc=example,dc=com","password":"password"},"search":{"base":"dc=example,dc=com","options":{"scope":"sub"}}}`,
         config: `url=ldap://ldap.forumsys.com:389&timeout=3000&connectTimeout=3000`,
     },
     mathjs: {
