@@ -11,7 +11,7 @@ COPY . .
 RUN npm install
 
 # Add troubleshooting/tweaking stuff
-RUN apt-get update && apt-get -y install lsof vim curl
+RUN apt-get update && apt-get -y install lsof vim curl ldap-utils
 
 EXPOSE 5001
-CMD npm start
+CMD npm run dev

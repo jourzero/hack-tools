@@ -5,6 +5,7 @@
     "description": "Hacking Tools",
     "main": "server.js",
     "scripts": {
+        "dev": "node_modules/.bin/nodemon --watch server --watch package.json server/server.js",
         "start": "node server/server.js",
         "test": "./node_modules/.bin/eslint server --ext .js"
     },
@@ -23,11 +24,13 @@
         "express-handlebars": "5.x",
         "express-session": "^1.17.1",
         "jquery": "^3.5.1",
+        "ldapjs": "^2.2.2",
         "libxmljs": "0.19.7",
         "method-override": "3.x",
         "morgan": "^1.10.0",
         "mysql": "2.18.1",
         "node-serialize": "0.0.4",
+        "nodemon": "^2.0.6",
         "q": "1.x",
         "serve-favicon": "^2.1.0",
         "sqlite3": "5.0.0",
