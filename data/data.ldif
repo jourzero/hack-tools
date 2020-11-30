@@ -1,0 +1,28 @@
+dn: dc=testorg,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: Test Org
+dc: testorg
+structuralObjectClass: organization
+entryUUID: f96c46ae-c70c-103a-8053-75048a58db03
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130040506Z
+entryCSN: 20201130040506.237457Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130040506Z
+
+dn: cn=admin,dc=testorg,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword:: e1NTSEF9czZEY0hIb3oyU0hRRjllOERMbVBOUDBWOXJxSUtBS0w=
+structuralObjectClass: organizationalRole
+entryUUID: f96d2efc-c70c-103a-8054-75048a58db03
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130040506Z
+entryCSN: 20201130040506.243502Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130040506Z
+

@@ -1,3 +1,4 @@
+<script src="/js/hackfunc.js"></script>
 <script src="/js/hacks.js"></script>
 <script src="/js/rest.js"></script>
 
@@ -19,7 +20,7 @@
             <td>&nbsp;</td>
             <td> <input type="text" id="HackConfig" title="Hack tool parameters" value="" placeholder="Hack tool config" hidden /> </td>
             <td>&nbsp;</td>
-            <td> <input type="checkbox" id="PrettifyOutput" class="testKbCB" title="Prettify Output?" hidden><span id="PrettifyLabel" hidden> Prettify </span></td> 
+            <td> <input type="checkbox" id="PrettifyOutput" class="testKbCB" title="Prettify Output?" checked hidden><span id="PrettifyLabel" hidden> Prettify </span></td> 
             <td>&nbsp;</td>
             <td> <button onclick="runTest()"  id="RunHack"  class="button hacktool" title="Run the selected test"           hidden> Run it! </button> </td>
             <td>&nbsp;</td>
@@ -27,19 +28,19 @@
             <td>&nbsp;</td>
             <td> <button onclick="showDevHelp()" id="DevHelp" class="button hacktool" title="Show developer help for the selected test" hidden> Dev Help </button> </td>
             <td>&nbsp;</td>
-            <td> <button onclick="showGenHelp()" id="GenHelp" class="button hacktool" title="Show general help for the selected test" hidden> General Help </button> </td>
+            <td> <button onclick="showGenHelp()" id="GenHelp" class="button hacktool" title="Show general help for the selected test" hidden> Gen. Help </button> </td>
             </tr> </table>
         </td> 
     </tr>
 
     <tr class="iTR">
         <th class="issueTH">Input Area</th>
-        <td class="prjLeft"><textarea id="InputArea" rows="6"
+        <td class="prjLeft"><textarea id="InputArea" rows="10"
                 placeholder="Enter inputs to process here."></textarea></td>
     </tr>
     <tr class="iTR">
         <th class="issueTH">Output Area</th>
-        <td class="prjLeft"><textarea id="OutputArea" rows="15"
+        <td class="prjLeft"><textarea id="OutputArea" rows="20"
                 placeholder="Outputs will be shown here"></textarea> </td>
     </tr>
 </table>

@@ -1,0 +1,142 @@
+dn: ou=rooms,dc=testorg,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: rooms
+structuralObjectClass: organizationalUnit
+entryUUID: 7e3b988e-c6ff-103a-9a77-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.101190Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: ou=users,dc=testorg,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: users
+structuralObjectClass: organizationalUnit
+entryUUID: 7e3cc89e-c6ff-103a-9a78-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.109078Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: ou=groups,dc=testorg,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+structuralObjectClass: organizationalUnit
+entryUUID: 7e3d56ba-c6ff-103a-9a79-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.112709Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: cn=bingo,ou=rooms,dc=testorg,dc=com
+objectClass: top
+objectClass: room
+cn: bingo
+description: 1st Floor Conference Room
+roomNumber: 104
+structuralObjectClass: room
+entryUUID: 7e3dfc32-c6ff-103a-9a7a-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.116942Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: cn=life,ou=rooms,dc=testorg,dc=com
+objectClass: top
+objectClass: room
+cn:: bGlmZSA=
+description: 2nd Floor Conference Room
+roomNumber: 204
+structuralObjectClass: room
+entryUUID: 7e3eb33e-c6ff-103a-9a7b-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.121628Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: cn=sorry,ou=rooms,dc=testorg,dc=com
+objectClass: top
+objectClass: room
+description: 3rd Floor Conference Room
+cn: sorry
+structuralObjectClass: room
+entryUUID: 7e3fbeaa-c6ff-103a-9a7c-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.128335Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: cn=fred,ou=users,dc=testorg,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: fred
+sn: mack
+uid: fred
+userPassword:: e1NIQX1XNnBoNU1tNVB6OEdnaVVMYlBnekczN21qOWc9
+structuralObjectClass: inetOrgPerson
+entryUUID: 7e406206-c6ff-103a-9a7d-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.132623Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: cn=sally,ou=users,dc=testorg,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: sally
+sn: up
+uid: sally
+userPassword:: e1NIQX1jTXpaQUhNNDF0Z2QwN1luRmlHNXo1cVg2Z0E9
+structuralObjectClass: inetOrgPerson
+entryUUID: 7e418762-c6ff-103a-9a7e-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.140166Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: cn=jeremy,ou=users,dc=testorg,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: jeremy
+sn: d
+uid: jeremy
+userPassword:: e1NIQX1XNnBoNU1tNVB6OEdnaVVMYlBnekczN21qOWc9
+structuralObjectClass: inetOrgPerson
+entryUUID: 7e428658-c6ff-103a-9a7f-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.146693Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+
+dn: cn=admins,ou=groups,dc=testorg,dc=com
+objectClass: top
+objectClass: groupOfNames
+cn: admins
+member: cn=jeremy,ou=users,dc=testorg,dc=com
+member: cn=fred,ou=users,dc=testorg,dc=com
+structuralObjectClass: groupOfNames
+entryUUID: 7e438990-c6ff-103a-9a80-0b5bcf5935e1
+creatorsName: cn=admin,dc=testorg,dc=com
+createTimestamp: 20201130022836Z
+entryCSN: 20201130022836.153329Z#000000#000#000000
+modifiersName: cn=admin,dc=testorg,dc=com
+modifyTimestamp: 20201130022836Z
+

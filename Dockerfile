@@ -4,14 +4,23 @@ FROM node:12
 # Create app directory
 WORKDIR /app
 
+# Update/upgrade packages
+RUN apt-get -y update && apt-get -y upgrade
+
+# Add test tools
+RUN apt-get -y install lsof vim curl ldap-utils
+
+# Add test servers
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server slapd
+
 # Copy local source to /app
 COPY . .
 
 # Get node modules
 RUN npm install
 
-# Add troubleshooting/tweaking stuff
-RUN apt-get update && apt-get -y install lsof vim curl ldap-utils
-
+# Only expose the Express app and let it interact with servers (MySQL, LDAP)
 EXPOSE 5001
-CMD npm run dev
+
+# Setup test servers and start Express app server
+CMD /bin/bash -c ./entrypoint.sh
