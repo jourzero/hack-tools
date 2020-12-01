@@ -192,27 +192,31 @@ function _ldapSearch(body, query, success, error) {
             }
             logger.info("LDAP bind succeeded");
 
-            client.search(data.search.base, data.search.options, function (serr, res) {
-                if (serr) {
-                    error(`LDAP search error: ${serr}`);
-                    return;
-                }
-                res.on("searchEntry", function (entry) {
-                    logger.info("entry: " + JSON.stringify(entry.object));
-                    entries.push(entry.object);
+            try {
+                client.search(data.search.base, data.search.options, function (serr, res) {
+                    if (serr) {
+                        error(`LDAP search error: ${serr}`);
+                        return;
+                    }
+                    res.on("searchEntry", function (entry) {
+                        logger.info("entry: " + JSON.stringify(entry.object));
+                        entries.push(entry.object);
+                    });
+                    res.on("searchReference", function (referral) {
+                        logger.info("referral: " + referral.uris.join());
+                    });
+                    res.on("error", function (eerr) {
+                        logger.error("error: " + eerr.message);
+                    });
+                    res.on("end", function (result) {
+                        logger.info(`End: ${result.status}`);
+                        success(entries);
+                        return;
+                    });
                 });
-                res.on("searchReference", function (referral) {
-                    logger.info("referral: " + referral.uris.join());
-                });
-                res.on("error", function (eerr) {
-                    logger.error("error: " + eerr.message);
-                });
-                res.on("end", function (result) {
-                    logger.info(`End: ${result.status}`);
-                    success(entries);
-                    return;
-                });
-            });
+            } catch (e) {
+                error(`LDAP search exception: ${e}`);
+            }
         });
 
         /*
@@ -228,6 +232,6 @@ function _ldapSearch(body, query, success, error) {
         connection.end();
         */
     } catch (e) {
-        error(`LDAP exception: ${e}`);
+        error(`LDAP bind exception: ${e}`);
     }
 }
