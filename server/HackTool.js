@@ -218,19 +218,6 @@ function _ldapSearch(body, query, success, error) {
                 error(`LDAP search exception: ${e}`);
             }
         });
-
-        /*
-        connection.connect();
-        connection.query(body, function (err, results, fields) {
-            if (err) {
-                error(`MySql query error: ${err}`);
-            } else {
-                success(results);
-            }
-        });
-        logger.debug("Ending connection");
-        connection.end();
-        */
     } catch (e) {
         error(`LDAP bind exception: ${e}`);
     }
