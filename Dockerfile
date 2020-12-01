@@ -18,6 +18,7 @@ COPY . .
 
 # Get node modules
 RUN npm install
+RUN npm install -g nodemon 
 
 # Only expose the Express app and let it interact with servers (MySQL, LDAP)
 EXPOSE 5001

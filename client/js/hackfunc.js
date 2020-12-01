@@ -69,3 +69,16 @@ function showGenHelp() {
         showRef(testname, "genref");
     }
 }
+
+function separateOutputLines() {
+    let newOutput = "";
+    if (!$("#PrettifyOutput").prop("checked")) {
+        console.info("Separating output lines for easier reading");
+        for (let i of JSON.parse($("#OutputArea").val())) {
+            newOutput += JSON.stringify(i) + "\n\n";
+        }
+        $("#OutputArea").val(newOutput);
+    } else {
+        console.warn("Already prettified, no need to separate output lines");
+    }
+}
