@@ -40,8 +40,14 @@ let hacks = {
             `  "serverinfo":"https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/"\n` +
             `}`,
         sample: `{
-"bind":{"dn":"cn=admin,dc=testorg,dc=com","password":"admin"},
-"search":{"base":"dc=testorg,dc=com", "options":{"scope":"sub"}}
+    "bind":{"dn":"cn=admin,dc=testorg,dc=com","password":"admin"},
+    "search":{
+        "base":"dc=testorg,dc=com", 
+        "options":{
+            "scope":"sub",
+            "filter": "(&(uid=fred)(sn=mack))"
+        }
+    }
 }`,
         config2: `url=ldap://ldap.forumsys.com:389&timeout=3000&connectTimeout=3000`,
         config: `url=ldap://127.0.0.1:389&timeout=3000&connectTimeout=3000`,

@@ -76,11 +76,7 @@ app.get("/hacktool", function (req, res) {
 });
 
 // ========================================== REST ROUTES ==========================================
-app.post("/api/hacktool/xmlparser", hacktool.xmlParser);
-app.post("/api/hacktool/jsondeser", hacktool.jsonDeserializer);
-app.post("/api/hacktool/ldapsearch", hacktool.ldapSearch);
-app.post("/api/hacktool/mysql", hacktool.mysqlQuery);
-app.post("/api/hacktool/sqlite", hacktool.sqliteQuery);
+app.post("/api/hacktool/:hacktool", hacktool.run);
 
 // ========================================== ERROR HANDLING ==========================================
 // create an error with .status. we

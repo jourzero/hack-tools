@@ -6,7 +6,7 @@ const sqlite3 = require("sqlite3");
 var ldap = require("ldapjs");
 const {exceptions} = require("./lib/appLogger.js");
 
-exports.xmlParser = function (req, res) {
+exports.run = function (req, res) {
     let ok = function (doc) {
         logger.info(`Successful hacktool execution. Doc: ${JSON.stringify(doc)}`);
         res.json(doc);
@@ -15,8 +15,26 @@ exports.xmlParser = function (req, res) {
         logger.warn(`Failed hacktool execution: ${JSON.stringify(errMsg)}`);
         res.json({ERROR: errMsg});
     };
-    logger.info("Running XML parser");
-    _parseXML(req.body, req.query, ok, err);
+    logger.info(`Running hacktool ${req.params.hacktool}`);
+    switch (req.params.hacktool) {
+        case "jsondeser":
+            _deserializeJSON(req.body, ok, err);
+            break;
+        case "ldapsearch":
+            _ldapSearch(req.body, req.query, ok, err);
+            break;
+        case "mysql":
+            _mysqlQuery(req.body, req.query, ok, err);
+            break;
+        case "sqlite":
+            _sqliteQuery(req.body, req.query, ok, err);
+            break;
+        case "xmlparser":
+            _parseXML(req.body, req.query, ok, err);
+            break;
+        default:
+            err(`Unknown hacktool ${req.params.hacktool}`);
+    }
 };
 
 function _parseXML(body, query, success, error) {
@@ -50,19 +68,6 @@ function _parseXML(body, query, success, error) {
     }
 }
 
-exports.jsonDeserializer = function (req, res) {
-    let ok = function (doc) {
-        logger.info(`Successful hacktool execution. Doc: ${JSON.stringify(doc)}`);
-        res.json(doc);
-    };
-    let err = function (errMsg) {
-        logger.warn(`Failed hacktool execution: ${JSON.stringify(errMsg)}`);
-        res.json({ERROR: errMsg});
-    };
-    logger.info("Running JSON parser");
-    _deserializeJSON(req.body, ok, err);
-};
-
 function _deserializeJSON(body, success, error) {
     logger.debug(`BODY: ${body}`);
     let jsonData = {};
@@ -74,19 +79,6 @@ function _deserializeJSON(body, success, error) {
     }
     success(jsonData);
 }
-
-exports.mysqlQuery = function (req, res) {
-    let ok = function (doc) {
-        logger.info(`Successful hacktool execution. Doc: ${JSON.stringify(doc)}`);
-        res.json(doc);
-    };
-    let err = function (errMsg) {
-        logger.warn(`Failed hacktool execution: ${JSON.stringify(errMsg)}`);
-        res.json({ERROR: errMsg});
-    };
-    logger.info("Running mysql interpreter");
-    _mysqlQuery(req.body, req.query, ok, err);
-};
 
 function _mysqlQuery(body, query, success, error) {
     logger.debug(`Query: ${JSON.stringify(query)}`);
@@ -108,19 +100,6 @@ function _mysqlQuery(body, query, success, error) {
         error(`MySql client exception: ${e}`);
     }
 }
-
-exports.sqliteQuery = function (req, res) {
-    let ok = function (doc) {
-        logger.info(`Successful hacktool execution. Doc: ${JSON.stringify(doc)}`);
-        res.json(doc);
-    };
-    let err = function (errMsg) {
-        logger.warn(`Failed hacktool execution: ${JSON.stringify(errMsg)}`);
-        res.json({ERROR: errMsg});
-    };
-    logger.info("Running mysql interpreter");
-    _sqliteQuery(req.body, req.query, ok, err);
-};
 
 function _sqliteQuery(body, param, success, error) {
     try {
@@ -151,19 +130,6 @@ function _sqliteQuery(body, param, success, error) {
         return;
     }
 }
-
-exports.ldapSearch = function (req, res) {
-    let ok = function (doc) {
-        logger.info(`Successful hacktool execution. Doc: ${JSON.stringify(doc)}`);
-        res.json(doc);
-    };
-    let err = function (errMsg) {
-        logger.warn(`Failed hacktool execution: ${JSON.stringify(errMsg)}`);
-        res.json({ERROR: errMsg});
-    };
-    logger.info("Running LDAP search");
-    _ldapSearch(req.body, req.query, ok, err);
-};
 
 function _ldapSearch(body, query, success, error) {
     logger.debug(`Body (${typeof body}): ${body}`);
