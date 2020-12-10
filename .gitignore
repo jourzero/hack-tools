@@ -103,3 +103,6 @@ dist
 # TernJS port file
 .tern-port
 utils/hacking/sqlite/sqlite3
+target/hacktools.zip
+veracode-pipeline-scan-results.json
+veracode-sca-results.json
