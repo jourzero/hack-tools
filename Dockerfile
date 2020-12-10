@@ -20,8 +20,11 @@ COPY . .
 RUN npm install
 RUN npm install -g nodemon 
 
-# Only expose the Express app and let it interact with servers (MySQL, LDAP)
+# Expose the Express app and let it interact with servers (MySQL, LDAP)
 EXPOSE 5001
+
+# Expose debug port for Dev Tools
+EXPOSE 9229
 
 # Setup test servers and start Express app server
 CMD /bin/bash -c ./entrypoint.sh

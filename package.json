@@ -5,9 +5,8 @@
     "description": "Hacking Tools",
     "main": "server.js",
     "scripts": {
-        "dev": "node_modules/.bin/nodemon --watch server --watch package.json server/server.js",
-        "start": "node server/server.js",
-        "test": "./node_modules/.bin/eslint server --ext .js"
+        "dev": "nodemon --watch server --watch package.json --inspect=0.0.0.0:9229 server/server.js",
+        "start": "node server/server.js"
     },
     "authors": [
         "Eric P."
@@ -30,13 +29,9 @@
         "morgan": "^1.10.0",
         "mysql": "2.18.1",
         "node-serialize": "0.0.4",
-        "nodemon": "^2.0.6",
         "q": "1.x",
         "serve-favicon": "^2.1.0",
         "sqlite3": "5.0.0",
         "winston": "^3.3.3"
-    },
-    "devDependencies": {
-        "eslint": "^7.14.0"
     }
 }
