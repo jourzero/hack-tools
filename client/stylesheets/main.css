@@ -103,7 +103,7 @@ th {
 }
 
 .iTR:nth-child(even) {
-    background: #fce5e5;
+    background: #f5f5f5;
 }
 
 .narrowCol {
@@ -203,18 +203,6 @@ th {
     width: 500px;
 }
 
-textarea {
-    max-height: 1000000px;
-    box-sizing: border-box;
-    padding: 0px 0;
-    background: transparent;
-    width: 98%;
-    padding-right: 20px;
-    vertical-align: top;
-    font-family: sans-serif;
-    height: 100%;
-}
-
 .tselTD {
     width: 55px;
 }
@@ -232,20 +220,17 @@ textarea {
     width: 168px;
 }
 
-/*
 textarea {
     max-height: 1000000px;
     box-sizing: border-box;
     padding: 0px 0;
     background: transparent;
-    border: 1px;
     width: 98%;
     padding-right: 20px;
     vertical-align: top;
     font-family: sans-serif;
     height: 100%;
 }
-*/
 
 .tinyTH {
     text-align: right;
