@@ -5,6 +5,7 @@
     "description": "Hacking Tools",
     "main": "server.js",
     "scripts": {
+        "dev-break": "nodemon --watch server --watch package.json --inspect-brk=0.0.0.0:9229 server/server.js",
         "dev": "nodemon --watch server --watch package.json --inspect=0.0.0.0:9229 server/server.js",
         "start": "node server/server.js"
     },

@@ -26,13 +26,21 @@
 
     <div>
         <form onsubmit="newMessage()">
-        <input type="text" id="ChatInput" placeholder="Input new chat message here">
-        <input type="checkbox" id="Pollute"  title='Pollute the message with __proto__: {canDelete: true}'> Pollute
+        <input type="text" id="ChatInput" placeholder="Input new chat message here" autofocus>
+        <input type="checkbox" id="Pollute"  title='Pollute the Object prototype by adding this attribute to new message before lodash merge: __proto__: {canDelete: true}'> Pollute
         </form>
     </div>
-    <div>
-        <span>Messages: {{msgs}}</span><br/><br/>
-        <span>Users: {{chatusers}}</span><br/><br/>
-        <span>chatusers.__proto__.canDelete: {{chatusers_proto_canDelete}}</span><br/><br/>
-    </div>
+    <br/> <br/> 
+<div>
+<hr/>
+<pre>
+chatusers[0].canDelete: {{user_canDelete}}
+
+Object.canDelete: {{object_canDelete}}
+
+chatusers: {{chatusers}}
+
+messages: {{msgs}}
+</pre>
+</div>
 </div>

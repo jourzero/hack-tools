@@ -13,7 +13,7 @@ const cookieParser = require("cookie-parser");
 const config = require("./config.js");
 const hacktool = require("./HackTool.js");
 const _ = require("lodash");
-var messages = [];
+let messages = [];
 let lastId = 1;
 
 // ========================================== GET CONFIG ==========================================
@@ -82,9 +82,10 @@ app.get("/hacktool", function (req, res) {
 app.get("/chat", function (req, res) {
     res.render("chat", {
         messages: messages,
-        msgs: JSON.stringify(messages, (indent = 2)),
-        chatusers: JSON.stringify(chatusers, (indent = 2)),
-        chatusers_proto_canDelete: chatusers.__proto__.canDelete,
+        msgs: JSON.stringify(messages, null, 2),
+        chatusers: JSON.stringify(chatusers, null, 2),
+        user_canDelete: chatusers[0].canDelete,
+        object_canDelete: Object.canDelete,
     });
 });
 
@@ -126,6 +127,7 @@ app.get("/chatusers", (req, res) => {
 app.put("/msg", (req, res) => {
     const user = findChatUser(req.body.auth || {});
     let pollute = req.body.message.pollute;
+    logger.info(`New incoming message: ${JSON.stringify(req.body.message)}`);
 
     if (!user) {
         res.status(403).send({ok: false, error: "Access denied"});
@@ -169,7 +171,7 @@ app.delete("/msg", (req, res) => {
 // can then use the property in our
 // custom error handler (Connect repects this prop as well)
 function error(status, msg) {
-    var err = new Error(msg);
+    let err = new Error(msg);
     err.status = status;
     return err;
 }
