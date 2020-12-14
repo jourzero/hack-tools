@@ -1,0 +1,38 @@
+<script src="/js/chatapp.js"></script>
+<script src="/dist/lodash/lodash.js"></script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+    </div>
+
+    <table class="issueSummaryTab">
+        <tr>
+            <th class="narrowCol"></th>
+            <th>Message</th>
+            <th>From</th>
+            <th class="narrowCol">Icon</th>
+        </tr>
+        {{#messages}}
+        <tr>
+            <td class="narrowCol"> <button id="btnDelMsg" class="button black" title="Delete chat message." onclick="delMessage({{id}});">x</button> &nbsp;</td>
+            <td class="msgEntry">{{text}}</td>
+            <td class="msgEntry">{{userName}}</td>
+            <td class="narrowCol">{{icon}}</td>
+        </tr>
+        {{/messages}}
+    </table>
+    <div> &nbsp; </div>
+
+    <div>
+        <form onsubmit="newMessage()">
+        <input type="text" id="ChatInput" placeholder="Input new chat message here">
+        <input type="checkbox" id="Pollute"  title='Pollute the message with __proto__: {canDelete: true}'> Pollute
+        </form>
+    </div>
+    <div>
+        <span>Messages: {{msgs}}</span><br/><br/>
+        <span>Users: {{chatusers}}</span><br/><br/>
+        <span>chatusers.__proto__.canDelete: {{chatusers_proto_canDelete}}</span><br/><br/>
+    </div>
+</div>

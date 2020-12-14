@@ -12,6 +12,9 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config.js");
 const hacktool = require("./HackTool.js");
+const _ = require("lodash");
+var messages = [];
+let lastId = 1;
 
 // ========================================== GET CONFIG ==========================================
 const port = process.env.PORT || config.port;
@@ -37,6 +40,7 @@ app.use(express.static(path.join(__dirname, "../client")));
 // Serve jquery npm module content to clients.  NOTE: make sure client source fiels use: <script src="/jquery/jquery.js"></script>
 app.use("/dist/jquery", express.static(path.join(__dirname, "../node_modules/jquery/dist/")));
 app.use("/dist/bootstrap", express.static(path.join(__dirname, "../node_modules/bootstrap/dist/")));
+app.use("/dist/lodash", express.static(path.join(__dirname, "../node_modules/lodash/")));
 
 // Serve private static content
 app.use("/static", express.static(path.join(__dirname, "../static/")));
@@ -75,8 +79,90 @@ app.get("/hacktool", function (req, res) {
     res.render("hacktool", {user: user});
 });
 
+app.get("/chat", function (req, res) {
+    res.render("chat", {
+        messages: messages,
+        msgs: JSON.stringify(messages, (indent = 2)),
+        chatusers: JSON.stringify(chatusers, (indent = 2)),
+        chatusers_proto_canDelete: chatusers.__proto__.canDelete,
+    });
+});
+
 // ========================================== REST ROUTES ==========================================
 app.post("/api/hacktool/:hacktool", hacktool.run);
+
+//======================================================================
+// Credits: https://github.com/Kirill89/prototype-pollution-explained
+//
+// This is a simple chat API:
+//
+// - All users can see all messages.
+// - Registered users can post messages.
+// - Administrators can delete messages.
+//======================================================================
+const chatusers = [
+    // You know password for the user.
+    {name: "user", password: "123456"},
+    // You don't know password for the admin.
+    //{name: "admin", password: Math.random().toString(32), canDelete: true},
+    {name: "admin", password: "1234567", canDelete: true},
+];
+
+function findChatUser(auth) {
+    return chatusers.find((u) => u.name === auth.name && u.password === auth.password);
+}
+
+// Get all messages (publicly available).
+app.get("/msg", (req, res) => {
+    res.send(messages);
+});
+
+// Get all chatusers
+app.get("/chatusers", (req, res) => {
+    res.send(chatusers);
+});
+
+// Post message (restricted for users only).
+app.put("/msg", (req, res) => {
+    const user = findChatUser(req.body.auth || {});
+    let pollute = req.body.message.pollute;
+
+    if (!user) {
+        res.status(403).send({ok: false, error: "Access denied"});
+        return;
+    }
+
+    const message = {
+        // Default message icon. Can be overwritten by user.
+        icon: "👋",
+    };
+
+    // Prototype pollution attempt (if lodash's merge is vulnerable)
+    if (pollute) message.__proto__.canDelete = true;
+
+    // Call lodash's merge function
+    _.merge(message, req.body.message, {
+        id: lastId++,
+        timestamp: Date.now(),
+        userName: user.name,
+    });
+
+    messages.push(message);
+    res.send({ok: true});
+});
+
+// Delete message by ID (restricted for users with flag "canDelete" only).
+app.delete("/msg", (req, res) => {
+    const user = findChatUser(req.body.auth || {});
+
+    if (!user || !user.canDelete) {
+        res.status(403).send({ok: false, error: "Access denied"});
+        return;
+    }
+
+    messages = messages.filter((m) => m.id !== req.body.messageId);
+    res.send({ok: true});
+});
 
 // ========================================== ERROR HANDLING ==========================================
 // create an error with .status. we

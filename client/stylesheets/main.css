@@ -103,7 +103,11 @@ th {
 }
 
 .iTR:nth-child(even) {
-    background: #f0f0f0;
+    background: #fce5e5;
+}
+
+.narrowCol {
+    width: 40px;
 }
 
 .prioSelector,
@@ -195,19 +199,20 @@ th {
     font-weight: bold;
 }
 
-/* textarea, .issueTA, .testKbTA { */
+#ChatInput {
+    width: 500px;
+}
+
 textarea {
-    max-height: 1000000px; /* Disable font boosting in Chrome for Android */
+    max-height: 1000000px;
     box-sizing: border-box;
     padding: 0px 0;
     background: transparent;
-    border: 1px;
     width: 98%;
     padding-right: 20px;
     vertical-align: top;
     font-family: sans-serif;
     height: 100%;
-    /* font-size: 14px; */
 }
 
 .tselTD {
@@ -227,8 +232,8 @@ textarea {
     width: 168px;
 }
 
+/*
 textarea {
-    /* Disable font boosting in Chrome for Android */
     max-height: 1000000px;
     box-sizing: border-box;
     padding: 0px 0;
@@ -240,6 +245,7 @@ textarea {
     font-family: sans-serif;
     height: 100%;
 }
+*/
 
 .tinyTH {
     text-align: right;
