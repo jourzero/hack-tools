@@ -140,7 +140,7 @@ app.put("/msg", (req, res) => {
     };
 
     // Prototype pollution attempt (if lodash's merge is vulnerable)
-    if (pollute) message.__proto__.canDelete = true;
+    //if (pollute) message.__proto__.canDelete = true;
 
     // Call lodash's merge function
     _.merge(message, req.body.message, {

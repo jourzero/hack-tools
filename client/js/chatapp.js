@@ -1,3 +1,5 @@
+let refreshDelay = 1500;
+
 function delMessage(id) {
     sendDelReq(id);
 }
@@ -10,28 +12,24 @@ function newMessage() {
 
 function sendPutReq(messageText, pollute) {
     let url = "/msg";
-    let data = {
-        auth: {
-            name: "user",
-            password: "123456",
-        },
-        message: {
-            text: messageText,
-            pollute: pollute,
-        },
-    };
-    console.debug(`Prototype pollution: ${pollute}`);
+    let polluteString = "";
+    if (pollute) {
+        polluteString = `,"__proto__":{"canDelete": "true"}`;
+    }
+    let data = `{"auth":{"name":"user","password":"123456"},"message":{"text":"${messageText}"${polluteString}}}`;
+
+    console.debug(`Prototype pollution string: ${polluteString}`);
     console.info(`Sending PUT request to url ${url} with data ${JSON.stringify(data)}`);
 
     $.ajax({
         url: url,
         type: "PUT",
         contentType: "application/json",
-        data: JSON.stringify(data),
+        data: data,
         dataType: "json",
         statusCode: {
             200: function () {
-                location.reload();
+                setTimeout(location.reload.bind(location), refreshDelay);
             },
             403: function (data) {
                 alert(`Status: ${data.statusText}`);
@@ -59,7 +57,7 @@ function sendDelReq(id) {
         dataType: "json",
         statusCode: {
             200: function () {
-                location.reload();
+                setTimeout(location.reload.bind(location), refreshDelay);
             },
             403: function (data) {
                 alert(`Could not delete message #${id}: ${data.statusText}`);

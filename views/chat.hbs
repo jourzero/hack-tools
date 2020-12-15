@@ -25,10 +25,8 @@
     <div> &nbsp; </div>
 
     <div>
-        <form onsubmit="newMessage()">
-        <input type="text" id="ChatInput" placeholder="Input new chat message here" autofocus>
-        <input type="checkbox" id="Pollute"  title='Pollute the Object prototype by adding this attribute to new message before lodash merge: __proto__: {canDelete: true}'> Pollute
-        </form>
+        <input type="text" id="ChatInput" placeholder="Input new chat message here" autofocus onkeydown="if(event.key==='Enter'){newMessage()}">
+        <input type="checkbox" id="Pollute"  title='Pollute the prototype'> Pollute
     </div>
     <br/> <br/> 
 <div>
