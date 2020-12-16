@@ -199,7 +199,11 @@ th {
     font-weight: bold;
 }
 
-#ChatInput {
+#PolluteString {
+    width: 400px;
+}
+
+#ChatInput,
     width: 500px;
 }
 

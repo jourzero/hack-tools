@@ -7,18 +7,18 @@ function delMessage(id) {
 function newMessage() {
     let message = $("#ChatInput").val();
     let pollute = $("#Pollute").prop("checked");
-    sendPutReq(message, pollute);
+    let polluteString = $("#PolluteString").val();
+    sendPutReq(message, pollute, polluteString);
 }
 
-function sendPutReq(messageText, pollute) {
+function sendPutReq(messageText, pollute, polluteString) {
     let url = "/msg";
-    let polluteString = "";
+    let data = `{"auth":{"name":"user","password":"123456"},"message":{"text":"${messageText}"}}`;
     if (pollute) {
-        polluteString = `,"__proto__":{"canDelete": "true"}`;
+        data = `{"auth":{"name":"user","password":"123456"},"message":{"text":"${messageText}",${polluteString}}}`;
+        console.debug(`Prototype pollution string: ${polluteString}`);
     }
-    let data = `{"auth":{"name":"user","password":"123456"},"message":{"text":"${messageText}"${polluteString}}}`;
 
-    console.debug(`Prototype pollution string: ${polluteString}`);
     console.info(`Sending PUT request to url ${url} with data ${JSON.stringify(data)}`);
 
     $.ajax({
