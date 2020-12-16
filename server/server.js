@@ -22,7 +22,7 @@ const port = process.env.PORT || config.port;
 // ========================================== EXPRESS ==========================================
 // Configure Express
 let app = express();
-//app.disable("x-powered-by");
+app.disable("x-powered-by");
 app.use(reqLogger);
 app.use(cookieParser());
 app.use(bodyParser.json({limit: "5mb"}));
@@ -126,7 +126,6 @@ app.get("/chatusers", (req, res) => {
 // Post message (restricted for users only).
 app.put("/msg", (req, res) => {
     const user = findChatUser(req.body.auth || {});
-    let pollute = req.body.message.pollute;
     logger.info(`New incoming message: ${JSON.stringify(req.body.message)}`);
 
     if (!user) {

@@ -2,8 +2,8 @@ const os = require("os");
 const {createLogger, format, transports} = require("winston");
 const {combine, timestamp, printf, json} = format;
 const appRoot = require("app-root-path");
-const myFormat = printf(({level, message, timestamp}) => {
-    return `${timestamp} ${level}: ${message}`;
+const myFormat = printf(({level, message, timest}) => {
+    return `${timest} ${level}: ${message}`;
 });
 
 module.exports = {
