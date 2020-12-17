@@ -200,11 +200,11 @@ th {
 }
 
 #PolluteString {
-    width: 400px;
+    width: 250px;
 }
 
-#ChatInput,
-    width: 500px;
+#ChatInput {
+    width: 300px;
 }
 
 .tselTD {
@@ -297,4 +297,8 @@ img {
 
 #TCweIDSearch {
     width: 70px;
+}
+
+pre {
+    font-size: 12px;
 }
